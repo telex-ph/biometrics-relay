@@ -8,7 +8,19 @@ const app = express();
 
 app.use(express.text({ type: "*/*" }));
 
-app.post("/biometric/events", async (req: Request, res: Response) => {
+app.get("/", (_req: Request, res: Response) => {
+  const response = {
+    status: "success",
+    message: "Relay is running",
+    timestamp: new Date().toISOString(),
+  };
+  res.json(response);
+  console.log("Test endpoint hit at", response.timestamp);
+});
+
+app.post("/relay/events", async (req: Request, res: Response) => {
+  console.log("Hello");
+
   const TRACKIO_URL = process.env.TRACKIO_URL;
   if (!TRACKIO_URL)
     throw new Error("TRACKIO_URL environment variable is not defined");
@@ -30,4 +42,4 @@ app.post("/biometric/events", async (req: Request, res: Response) => {
 });
 
 // Start server on port 80
-app.listen(80, () => console.log("Relay running on port 80"));
+app.listen(3000, () => console.log("Relay running on port 80"));
