@@ -40,4 +40,4 @@ app.post("/relay/events", async (req: Request, res: Response) => {
 });
 
 // Start server on port 80
-app.listen(3000, () => console.log("Relay running on port 80"));
+app.listen(1111, () => console.log("Relay running on port 80"));
