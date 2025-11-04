@@ -19,8 +19,6 @@ app.get("/", (_req: Request, res: Response) => {
 });
 
 app.post("/relay/events", async (req: Request, res: Response) => {
-  console.log("Hello");
-
   const TRACKIO_URL = process.env.TRACKIO_URL;
   if (!TRACKIO_URL)
     throw new Error("TRACKIO_URL environment variable is not defined");
